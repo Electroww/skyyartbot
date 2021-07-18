@@ -4,9 +4,6 @@ from discord.ext import tasks
 import json
 from decouple import config
 
-# url = 'https://api.twitch.tv/helix/channels/?broadcaster_id=70298660'
-#136494402
-#url = 'https://api.twitch.tv/helix/streams?client_id=136494402&user_login=glayen'
 url = 'https://api.twitch.tv/helix/channels/?broadcaster_id=70298660'
 auth = { 'client-id': config('CLIENT_ID')}
 
