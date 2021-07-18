@@ -2,13 +2,16 @@ import discord
 import requests
 from discord.ext import tasks
 import json
-from decouple import config
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
 
 url = 'https://api.twitch.tv/helix/channels/?broadcaster_id=70298660'
-auth = { 'client-id': config('CLIENT_ID')}
+auth = { 'client-id': os.environ.get('CLIENT_ID')}
 
 SKYYART_TITLE = ''
-CHANNEL = config('CHANNEL')
+CHANNEL = os.environ.get('CHANNEL')
 
 client = discord.Client()
 
@@ -31,4 +34,4 @@ async def title_update():
         await channel.send(f"NOUVEAU TITRE DE STREAM DE **SKYYART LE 10E** 🥵🥵 \n**{SKYYART_TITLE}**")
         
 
-client.run(config('TOKEN'))
+client.run(os.environ.get('TOKEN'))
