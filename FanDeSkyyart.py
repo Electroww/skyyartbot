@@ -11,7 +11,6 @@ url = 'https://api.twitch.tv/helix/channels/?broadcaster_id=70298660'
 auth = { 'client-id': os.environ.get('CLIENT_ID')}
 
 SKYYART_TITLE = ''
-CHANNEL = os.environ.get('CHANNEL')
 
 client = discord.Client()
 
@@ -25,7 +24,8 @@ async def title_update():
     global SKYYART_TITLE 
     response = requests.get(url, headers = auth)
     data = response.json()
-    channel = client.get_channel(CHANNEL)
+    channel = client.get_channel(id=os.environ.get('CHANNEL'))
+    print(channel)
     if (SKYYART_TITLE == data['data'][0]['title']):
         print('Aucun changement de titre fuck code createur SKYYART')
     else:
