@@ -2,15 +2,16 @@ import discord
 import requests
 from discord.ext import tasks
 import json
+from decouple import config
 
 # url = 'https://api.twitch.tv/helix/channels/?broadcaster_id=70298660'
 #136494402
 #url = 'https://api.twitch.tv/helix/streams?client_id=136494402&user_login=glayen'
 url = 'https://api.twitch.tv/helix/channels/?broadcaster_id=70298660'
-auth = { 'client-id': 'wi08ebtatdc7oj83wtl9uxwz807l8b'}
+auth = { 'client-id': config('CLIENT_ID')}
 
 SKYYART_TITLE = ''
-CHANNEL = 234749317443878912
+CHANNEL = config('CHANNEL')
 
 client = discord.Client()
 
@@ -27,10 +28,10 @@ async def title_update():
     channel = client.get_channel(CHANNEL)
     if (SKYYART_TITLE == data['data'][0]['title']):
         print('Aucun changement de titre fuck code createur SKYYART')
-    else :
+    else:
         SKYYART_TITLE = data['data'][0]['title']
         print(SKYYART_TITLE)
         await channel.send(f"NOUVEAU TITRE DE STREAM DE **SKYYART LE 10E** 🥵🥵 \n**{SKYYART_TITLE}**")
         
 
-client.run("NTU5NzcyNDE0Mjg0OTIyODgx.XJj-rw.Hy0HcMh62WZGwtBzfQmLnfBX9EY")
+client.run(config('TOKEN'))
