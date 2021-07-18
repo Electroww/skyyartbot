@@ -1,0 +1,5 @@
+git+https://github.com/Electroww/skyyartbot
+discord
+requests
+decouple
+json
