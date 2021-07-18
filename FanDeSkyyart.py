@@ -25,13 +25,13 @@ async def title_update():
     global SKYYART_TITLE 
     response = requests.get(url, headers = auth)
     data = response.json()
-    channel = client.get_channel(CHANNEL)
+    channel = await client.get_channel(CHANNEL)
     if (SKYYART_TITLE == data['data'][0]['title']):
         print('Aucun changement de titre fuck code createur SKYYART')
     else:
         SKYYART_TITLE = data['data'][0]['title']
-        print(SKYYART_TITLE)
         await channel.send(f"NOUVEAU TITRE DE STREAM DE **SKYYART LE 10E** 🥵🥵 \n**{SKYYART_TITLE}**")
+        print(SKYYART_TITLE)
         
 
 client.run(os.environ.get('TOKEN'))
